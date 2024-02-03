@@ -73,11 +73,24 @@ public class TestClass {
         myArrayList.remove("Первое");
         Assertions.assertTrue(myArrayList.isEmpty());
     }
+
     @Test
     @DisplayName("Проверяется метод проверки очистки списка")
     void clearTest() {
         myArrayList.clear();
         Assertions.assertTrue(myArrayList.isEmpty());
+    }
+
+    @Test
+    @DisplayName("Проверяется метод возвращаюего размер списка")
+    void sizeTest() {
+        Assertions.assertEquals(myArrayList.size(), 1);
+        myArrayList.clear();
+        Assertions.assertEquals(myArrayList.size(), 0);
+        for (int i = 0; i < 40; i++) {
+            myArrayList.add(String.valueOf(i));
+        }
+        Assertions.assertEquals(myArrayList.size(), 40);
     }
 
 }

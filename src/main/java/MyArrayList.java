@@ -28,9 +28,10 @@ public class MyArrayList<E> implements MyList<E> {
 
     private Object[] array;
     private int size;
+    private int capacity = 10;
 
     public MyArrayList() {
-        array = new Object[10];
+        array = new Object[capacity];
     }
 
     /**
@@ -41,12 +42,15 @@ public class MyArrayList<E> implements MyList<E> {
     }
 
     private void grow() {
-        Object[] newArray = new Object[size + 10];
+        capacity += array.length * 0.75;
+        if (capacity < 0) capacity = Integer.MAX_VALUE;
+        Object[] newArray = new Object[capacity];
         System.arraycopy(array, 0, newArray, 0, size);
         array = newArray;
     }
 
     private void checkSize() {
+        if (size == Integer.MAX_VALUE) throw new ArrayIndexOutOfBoundsException("Вы достигли предела");
         if (array.length == size) {
             grow();
         }
@@ -272,6 +276,7 @@ public class MyArrayList<E> implements MyList<E> {
         quickSort(array, l, pivot - 1);
         quickSort(array, pivot + 1, r);
     }
+
     @SuppressWarnings("unchecked")
     private int partition(Object[] array, int l, int r) {
         var pivot = array[r];
