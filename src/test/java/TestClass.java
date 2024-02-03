@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+// хорошие тесты
 @DisplayName("Мой ArrayList")
 public class TestClass {
     MyArrayList<String> myArrayList;
@@ -64,7 +65,7 @@ public class TestClass {
         newArrayList.add("В");
         newArrayList.add("Г");
         newArrayList.add("Первое");
-        Assertions.assertTrue(myArrayList.equals(newArrayList));
+        Assertions.assertEquals(myArrayList, newArrayList);
     }
 
     @Test
