@@ -3,6 +3,7 @@ import java.util.function.Consumer;
 
 public class MyArrayList<E> implements MyList<E> {
 
+    public static final String OUT_OF_BOUND_ERR_MSG = "Вы достигли предела";
     /**
      * Динамический массив, имплементирующий интерфейс MyList.
      * Реализует все методы работы со списками, может хранить все типы данных, кроме примитивных, включая null.
@@ -23,7 +24,7 @@ public class MyArrayList<E> implements MyList<E> {
      * Обратите внимание, что отказоустойчивость итератора не может быть гарантирована,
      * поскольку, невозможно дать какие-либо жесткие гарантии при наличии несинхронизированной
      * параллельной модификации. Следовательно, было бы неправильно писать программу, корректность которой зависела бы от
-     * этого исключения: отказоустойчивое поведение итераторов следует использовать только для обнаружения ошибок
+     * этого исключения: отказоустойчивое поведение итераторов следует использовать только для обнаружения ошибок Слишком много текста)
      */
 
     private Object[] array;
@@ -50,7 +51,7 @@ public class MyArrayList<E> implements MyList<E> {
     }
 
     private void checkSize() {
-        if (size == Integer.MAX_VALUE) throw new ArrayIndexOutOfBoundsException("Вы достигли предела");
+        if (size == Integer.MAX_VALUE) throw new ArrayIndexOutOfBoundsException(OUT_OF_BOUND_ERR_MSG);
         if (array.length == size) {
             grow();
         }
@@ -109,7 +110,7 @@ public class MyArrayList<E> implements MyList<E> {
      * Заменяет элемент на позиции в списке, равной индексу
      *
      * @param index   индекс элемента, который будет заменён
-     * @param element элемент, на который будет произведена замена
+     * @param element элемент, на который будет произведена замена есть комменты в интерфейсе, здесь они ни к чему
      */
     public void set(E element, int index) {
         checkIndex(index);
@@ -123,7 +124,7 @@ public class MyArrayList<E> implements MyList<E> {
      */
     public void remove(E element) {
         for (int i = 0; i < size; i++) {
-            if (array[i].equals(element)) {
+            if (array[i].equals(element)) { // потенциальное NPE
                 delete(i);
                 return;
             }
@@ -152,9 +153,7 @@ public class MyArrayList<E> implements MyList<E> {
      * Удаляет все элементы из коллекции. После вызова список будет пуст
      */
     public void clear() {
-        for (int i = 0; i < size; i++) {
-            array[i] = null;
-        }
+        array = new Object[array.length];
         size = 0;
     }
 
