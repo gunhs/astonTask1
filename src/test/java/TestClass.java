@@ -3,7 +3,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-// хорошие тесты
 @DisplayName("Мой ArrayList")
 public class TestClass {
     MyArrayList<String> myArrayList;
@@ -83,7 +82,7 @@ public class TestClass {
     }
 
     @Test
-    @DisplayName("Проверяется метод возвращаюего размер списка")
+    @DisplayName("Проверяется метод возвращающего размер списка")
     void sizeTest() {
         Assertions.assertEquals(myArrayList.size(), 1);
         myArrayList.clear();
