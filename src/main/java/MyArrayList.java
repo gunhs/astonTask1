@@ -113,7 +113,7 @@ public class MyArrayList<E> implements MyList<E> {
 
     public boolean contains(E element) {
         for (int i = 0; i < size; i++) {
-            if (array[i].equals(element)) {
+            if (array[i] != null && array[i].equals(element)) {
                 return true;
             }
         }
