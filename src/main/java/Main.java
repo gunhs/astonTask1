@@ -6,11 +6,13 @@ public class Main {
         myArrayList.add("Раз");
         myArrayList.add("Два");
         myArrayList.add(null);
+        myArrayList.contains("Четыре");
         myArrayList.remove("Три");
         myArrayList.remove(null);
         myArrayList.forEach(System.out::println);
         ArrayList<String> list = new ArrayList<>();
         list.add("GGG");
+        list.add(null);
         list.add(null);
         list.remove(null);
         list.forEach(System.out::println);
